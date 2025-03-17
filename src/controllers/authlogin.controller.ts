@@ -15,17 +15,16 @@ export class AuthLoginController {
       // Vérifier si l'utilisateur existe
       const user = await db.user.findOne({ where: { email } });
       if (!user) {
-         res.status(401).json({ message: "Email ou mot de passe incorrect." });
-         return;
+        res.status(401).json({ message: "Email ou mot de passe incorrect." });
+        return;
       }
 
       // Vérifier le mot de passe avec Argon2
       const isPasswordValid = await argon2.verify(user.mdp, mdp);
       if (!isPasswordValid) {
-         res.status(401).json({ message: "Email ou mot de passe incorrect." });
-         return;
+        res.status(401).json({ message: "Email ou mot de passe incorrect." });
+        return;
       }
-      
 
       // Générer un token JWT
       const token = jwt.sign(
@@ -34,7 +33,11 @@ export class AuthLoginController {
         { expiresIn: "1h" } // Expiration du token après 1 heure
       );
 
-      res.json({ token });
+      // Répondre avec le token et un message personnalisé
+      res.json({
+        message: `Bienvenue ${user.email}! Vous êtes connecté avec succès.`,
+        token,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Erreur serveur." });
