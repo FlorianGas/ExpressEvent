@@ -1,6 +1,6 @@
 # Express : Atelier Pratique
 ## API de gestion d'évènementiel
-Créer une API REST (en JS ou TS) avec schémas de validation,gestion des statusCode, JWT, ... qui permette de gérer des évènements (thème de votre choix, j'avais fait des évènements autour du développement Web par ex)
+Créer une API REST (en TS) avec schémas de validation,gestion des statusCode, JWT, ... qui permette de gérer des évènements (thème de votre choix, j'avais fait des évènements autour du développement Web par ex)
 
 ### Un évènement est caractérisé par : 
 * Id
