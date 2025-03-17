@@ -3,7 +3,7 @@ import db  from "../models";
 import argon2 from "argon2";
 
 export class UserController{
-
+ 
     static async getUsers(req:Request , res:Response){
         const result =await db.user.findAndCountAll({
             offset:0,

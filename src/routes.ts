@@ -4,6 +4,7 @@ import { UserController } from "./controllers/user.controller";
 import {EventController}  from "./controllers/event.controller";
 import { CategoryController } from "./controllers/categorie.controller";
 import { RegisterController } from "./controllers/inscription.controller";
+import { AuthLoginController } from "./controllers/authlogin.controller";
 
 export const routes = Router().get("/hello/:name", DefaultController.getHello);
 //Routes User
@@ -21,7 +22,8 @@ routes.get('/event/:id', EventController.getEventByIdAndPlace );
 //Routes Catégories 
 routes.get("/category", CategoryController.getCategory);
 
-
+//Routes Login
+routes.post("/login", AuthLoginController.login)
 
 //Routes inscription
 routes.get("/Register", RegisterController.getRegister);
