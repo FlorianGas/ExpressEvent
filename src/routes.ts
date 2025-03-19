@@ -5,6 +5,7 @@ import {EventController}  from "./controllers/event.controller";
 import { CategoryController } from "./controllers/categorie.controller";
 import { RegisterController } from "./controllers/inscription.controller";
 import { AuthLoginController } from "./controllers/authlogin.controller";
+import {  verifyToken} from "./middlewares/authentification.middleware";
 
 export const routes = Router().get("/hello/:name", DefaultController.getHello);
 //Routes User
@@ -17,6 +18,8 @@ routes.put("/updateUser/:id", UserController.UpdateUser);
 //Routes event 
 routes.get("/event", EventController.getEvent);
 routes.post("/event/addevent", EventController.addEvent);
+routes.post("/event/addeventauth", verifyToken, EventController.addEventAuth)
+routes.put("/updateevents/:id", verifyToken, EventController.updateEvent);
 routes.get("/eventbydate", EventController.getEventByDate);
 routes.get('/event/:id', EventController.getEventByIdAndPlace );
 //Routes Catégories 
